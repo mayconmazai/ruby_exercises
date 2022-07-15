@@ -67,3 +67,19 @@ def caeser_cipher(string, factor)
     return code.pack('C*')
 end
 puts caeser_cipher("What a string!", 5) # => "\mfy%f%xywnsl&"
+
+def simple_short_decipher(string, factor)
+    alphabet = ('a'..'z').to_a
+    code = []
+    string.each_char do |char|
+        if alphabet.index(char)
+            code << alphabet[(alphabet.index(char) - factor) % alphabet.length]
+        elsif alphabet.index(char.downcase) && char.upcase
+            code << alphabet[(alphabet.index(char.downcase) - factor) % alphabet.length].upcase
+        else
+            code << char
+        end
+    end
+    return code.join
+end
+puts simple_short_decipher("Bmfy f xywnsl!", 5) # => "What a string!"
