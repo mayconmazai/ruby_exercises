@@ -1,17 +1,3 @@
-january = [Time.new(2022, 1, 1).wday, 31]
-febuary = [Time.new(2022, 2, 1).wday, 28]
-march = [Time.new(2022, 3, 1).wday, 31]
-april = [Time.new(2022, 4, 1).wday, 30]
-may = [7, 31]
-june = [Time.new(2022, 6, 1).wday, 30]
-july = [Time.new(2022, 7, 1).wday, 31]
-august = [Time.new(2022, 8, 1).wday, 31]
-september = [Time.new(2022, 9, 1).wday, 30]
-october = [Time.new(2022, 10, 1).wday, 31]
-november = [Time.new(2022, 11, 1).wday, 30]
-december = [Time.new(2022, 12, 1).wday, 31]
-
-
 def agenda_copy(week_start_previous_month, last_day_previous_month, week_start, last_day )
   month_day_start = 1
   last_month_day_start = 1
@@ -24,7 +10,7 @@ def agenda_copy(week_start_previous_month, last_day_previous_month, week_start, 
     copy_month_day_start = month_day_start + diference.abs
     puts "copy_month_day_start = #{copy_month_day_start}"
   elsif week_start > week_start_previous_month
-    copy_month_day_start = (week - week_start) + diference.abs
+    copy_month_day_start = week_start_previous_month + month_day_start + (week - week_start)
     puts "copy_month_day_start = #{copy_month_day_start}"
   else
     copy_month_day_start = month_day_start
@@ -41,6 +27,18 @@ def agenda_copy(week_start_previous_month, last_day_previous_month, week_start, 
 end
 
 puts "Validating the agenda_copy method..."
+january = [Time.new(2022, 1, 1).wday, 31]
+febuary = [Time.new(2022, 2, 1).wday, 28]
+march = [Time.new(2022, 3, 1).wday, 31]
+april = [Time.new(2022, 4, 1).wday, 30]
+may = [7, 31]
+june = [Time.new(2022, 6, 1).wday, 30]
+july = [Time.new(2022, 7, 1).wday, 31]
+august = [Time.new(2022, 8, 1).wday, 31]
+september = [Time.new(2022, 9, 1).wday, 30]
+october = [Time.new(2022, 10, 1).wday, 31]
+november = [Time.new(2022, 11, 1).wday, 30]
+december = [Time.new(2022, 12, 1).wday, 31]
 puts '----------------------------------------------------'
 puts "january = #{january} to febuary = #{febuary}"
 agenda_copy(january[0],january[1],febuary[0],febuary[1])
